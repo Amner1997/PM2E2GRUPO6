@@ -277,6 +277,7 @@ namespace PM2E2GRUPO6.Views
             imgFoto.Source = "Foto.png";
             txtDescription.Text = "";
             Image = null;
+           
             
             //ObtenerLatitud_Longitud();
 

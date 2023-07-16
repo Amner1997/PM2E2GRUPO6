@@ -124,5 +124,10 @@ namespace PM2E2GRUPO6.Views
                 await DisplayAlert("Error","Ha ocurrido un error eliminando el sitio","Ok");
             }
         }
+
+        private void btnRefresh_Clicked(object sender, EventArgs e)
+        {
+            LoadData();
+        }
     }
 }
