@@ -27,6 +27,23 @@ namespace PM2E2GRUPO6.Servicios
             return false;
         }
 
+        public async Task<string> AgregarSitios(Sitios parametros)
+        {
+            var data = await conexionFirebase
+                  .Child("Sitios")
+                  .PostAsync(new Sitios()
+                  {
+                      Id = parametros.Id,
+                      Descripcion = parametros.Descripcion,
+                      Latitud = parametros.Latitud,
+                      Longitud = parametros.Longitud,
+                      Fotografia = parametros.Fotografia,
+                      AudioFile = parametros.AudioFile    
+
+                  });
+            return data.Key;
+        }
+
         //Listar sitios
         public async Task<List<Sitios>> GetAllSitios()
         {
@@ -51,12 +68,36 @@ namespace PM2E2GRUPO6.Servicios
         }
 
         // Actualizar Sitios
-        public async Task<bool> UpdateSitios(Sitios sitio)
+       /* public async Task<bool> UpdateSitios(Sitios sitio)
         {
             await conexionFirebase.Child(nameof(Sitios) + "/" + sitio.Id).PutAsync(JsonConvert.SerializeObject(sitio));
             return true;
+        }*/
+
+        public async Task EditarSitio(Sitios parametros)
+        {
+            var data = (await conexionFirebase
+                 .Child("Sitios")
+                 .OnceAsync<Sitios>()).Where(a => a.Object.Id == parametros.Id).FirstOrDefault();
+
+            if (data != null)
+            {
+                data.Object.Descripcion = parametros.Descripcion;
+                data.Object.Latitud = parametros.Latitud;
+                data.Object.Longitud = parametros.Longitud;
+                data.Object.Fotografia = parametros.Fotografia;
+                data.Object.AudioFile = parametros.AudioFile;
+
+                await conexionFirebase
+                    .Child("Sitios")
+                    .Child(data.Key)
+                    .PutAsync(data.Object);
+            }
         }
 
+
+
+        //Eliminar sitio
         public async Task<bool> DeleteSitios(string id){
             await conexionFirebase.Child(nameof(Sitios) + "/" + id).DeleteAsync();
             return true;

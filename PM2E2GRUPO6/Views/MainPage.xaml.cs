@@ -99,20 +99,26 @@ namespace PM2E2GRUPO6
 
             FirebaseConnection Crud = new FirebaseConnection();
 
-            var IsSaved = Crud.SaveSitios(sitio);
+            var IsSaved = Crud.AgregarSitios(sitio);
 
-            if (await IsSaved)
-            {
-                await DisplayAlert("Aviso", "Sitio Agregado", "OK");
-                imgFoto.Source = "Foto.png";
-                txtDescription.Text = "";
-                Imagen = null;
-                ObtenerLatitud_Longitud();
-            }
-            else
-            {
-                await DisplayAlert("Error", "Sitio Agregado no agregado", "OK");
-            }
+            await DisplayAlert("Aviso", "Sitio Agregado", "OK");
+            imgFoto.Source = "Foto.png";
+            txtDescription.Text = "";
+            Imagen = null;
+            ObtenerLatitud_Longitud();
+
+            /*  if (await IsSaved)
+              {
+                  await DisplayAlert("Aviso", "Sitio Agregado", "OK");
+                  imgFoto.Source = "Foto.png";
+                  txtDescription.Text = "";
+                  Imagen = null;
+                  ObtenerLatitud_Longitud();
+              }
+              else
+              {
+                  await DisplayAlert("Error", "Sitio Agregado no agregado", "OK");
+              }*/
 
         }
 
@@ -144,7 +150,6 @@ namespace PM2E2GRUPO6
                 txtMessage.TextColor = Color.Green;
                 btnGrabar.Text = "Dejar de Grabar";
             }
-
 
         }
 
