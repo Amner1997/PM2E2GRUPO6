@@ -63,7 +63,8 @@
                                         <SwipeView.RightItems>
                                             <SwipeItems>
                                                 <SwipeItem Text="Eliminar"
-                                       BackgroundColor="#FF4500" Clicked="SwipeItem_Delete"/>
+                                       BackgroundColor="#FF4500" Clicked="SwipeItem_Delete"
+                                                           CommandParameter="{Binding Id}"/>
                                             </SwipeItems>
                                         </SwipeView.RightItems>
 

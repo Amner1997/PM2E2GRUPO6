@@ -126,7 +126,18 @@ namespace PM2E2GRUPO6.Views
 
         private async void SwipeItem_Delete(object sender, EventArgs e)
         {
-            await DisplayAlert("Aviso", "Eliminar", "OK");
+            var resp = await DisplayAlert("Aviso", "Desea eliminar el campo?", "Si", "No");
+            if (resp){
+                SwipeItem item = sender as SwipeItem;
+                var id = item.CommandParameter.ToString();
+                //var id = ((SwipedEventArgs)e).Parameter as string;
+                if (id != null) await DisplayAlert("Great", "valor " + id, "Ok");
+                else await DisplayAlert("Error","error","ok");
+            }
+            else
+            {
+                await DisplayAlert("Error","Ha ocurrido un error eliminando el sitio","Ok");
+            }
         }
     }
 }
