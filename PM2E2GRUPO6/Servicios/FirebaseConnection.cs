@@ -57,7 +57,10 @@ namespace PM2E2GRUPO6.Servicios
             return true;
         }
 
-
+        public async Task<bool> DeleteSitios(string id){
+            await conexionFirebase.Child(nameof(Sitios) + "/" + id).DeleteAsync();
+            return true;
+        }
 
     }
 
