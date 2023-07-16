@@ -1,4 +1,5 @@
 ﻿using Plugin.AudioRecorder;
+using PM2E2GRUPO6.Views;
 using PM2E2GRUPO6.Models;
 using PM2E2GRUPO6.Servicios;
 using System;
@@ -39,18 +40,29 @@ namespace PM2E2GRUPO6.Views
 
         private void listSites_ItemTapped(object sender, ItemTappedEventArgs e)
         {
-            try
-            {
-                Site = e.Item as Sitios;
-            }catch(Exception ex)
-            {
-                DisplayAlert("Error", ex.Message, "OK");
-            }
+            Site = (Sitios)e.Item;
         }
 
-        private void btnViewMapa_Clicked(object sender, EventArgs e)
+        private void btnDelete_Clicked(object sender, EventArgs e)
         {
 
+        }
+
+        private async void btnViewMapa_Clicked(object sender, EventArgs e)
+        {
+
+            try
+            {
+                await Navigation.PushModalAsync(new VerMapa(Site.Latitud,Site.Longitud,Site.Descripcion));
+             
+            }
+            catch(Exception M)
+            {
+            
+                await DisplayAlert("Advertencia", "Favor seleccione el sitio donde desea ver en el mapa", "Ok");
+            }
+
+           
         }
 
         private void btnViewListen_Clicked(object sender, EventArgs e)
