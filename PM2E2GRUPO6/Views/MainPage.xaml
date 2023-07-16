@@ -1,0 +1,116 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PM2E2GRUPO6.MainPage">
+
+    <ScrollView>
+        <StackLayout>
+
+            <StackLayout>
+                <Label  Text="IMAGEN DEL SITIO"
+                        HorizontalOptions="Center"
+                        TextColor="#2D90F9" 
+                        FontSize="20"
+                   />
+
+                <Label Text="TOQUE LA IMAGEN PARA TOMAR FOTO"
+                       TextColor="#2D90F9"
+                       HorizontalOptions="Center"
+                   />
+
+                <Image x:Name="imgFoto"
+                       Source="Foto.png"
+                       Aspect="AspectFit"
+                       HorizontalOptions="Center" 
+                       WidthRequest="300"
+                       HeightRequest="220" >
+
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"
+                                              NumberOfTapsRequired="1"/>
+                    </Image.GestureRecognizers>
+
+                </Image>
+            </StackLayout>
+
+            <Label Text="Latitud:" 
+               Margin="30,10,0,0"
+               HorizontalOptions="StartAndExpand" 
+               FontSize="20"
+               TextColor="#2D90F9"/>
+
+            <Entry x:Name="txtLatitude"
+                   Keyboard="Numeric"
+                   Placeholder=""
+                   HorizontalOptions="FillAndExpand" 
+                   Margin="30,0,30,0"
+                   IsEnabled="False"
+                   />
+
+            <Label Text="Longitud:" 
+               Margin="30,10,0,0"
+               HorizontalOptions="StartAndExpand" 
+               TextColor="#2D90F9"
+               FontSize="20"/>
+
+            <Entry x:Name="txtLongitude"
+                   Keyboard="Numeric"
+                   Placeholder=""
+                   HorizontalOptions="FillAndExpand" 
+                   Margin="30,0,30,0"
+                   IsEnabled="False"
+                   />
+
+            <Label Text="Descripcion:" 
+               Margin="30,10,0,0"
+               TextColor="#2D90F9"
+               HorizontalOptions="StartAndExpand" 
+               FontSize="20"/>
+
+            <Editor x:Name="txtDescription"
+                    Keyboard="Text"
+                    AutoSize="TextChanges"
+                    MaxLength="50"
+                    HorizontalOptions="FillAndExpand"
+                    Margin="30,0,30,0"
+                    Placeholder=""
+                    />
+
+            <Label Text="CLICK EN GRABAR VOZ"
+                   TextColor="#2D90F9"
+                   HorizontalOptions="Center"
+                   x:Name="txtMessage"   
+                   FontSize="20"/>
+
+            <Button Text="Grabar audio" 
+                    x:Name="btnGrabar" 
+                    Margin="20,0,20,0"
+                    BackgroundColor="#00CC99"
+                    CornerRadius="25"
+                    FontAttributes="Bold"
+                    FontSize="20"
+                    Clicked="BtnGrabar"/>
+
+            <Grid Margin="20,10,20,0">
+                <Button x:Name="btnAdd"
+                            Text="Agregar"
+                            HorizontalOptions="FillAndExpand"
+                            Grid.Column="0"
+                            BackgroundColor="#00CC99"
+                            CornerRadius="25"
+                            Clicked="BtnAdd"/>
+
+                <Button x:Name="btnList"
+                            Text="Lista Sitios"
+                            HorizontalOptions="FillAndExpand"
+                            Grid.Column="1"
+                            BackgroundColor="#00CC99"
+                            CornerRadius="25"
+                            Clicked="btnList_Clicked"/>
+            </Grid>
+
+
+        </StackLayout>
+    </ScrollView>
+
+</ContentPage>

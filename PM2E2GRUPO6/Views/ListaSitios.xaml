@@ -1,0 +1,130 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PM2E2GRUPO6.Views.ListaSitios"
+             xmlns:Converter="clr-namespace:PM2E2GRUPO6.Convertidor">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Converter:ByteArrayImage x:Key="ByteToImage" />
+            <Color x:Key="PrimaryColor">#2D90F9</Color>
+            <Color x:Key="AccentColor">#01A3FF</Color>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.Content>
+        <StackLayout>
+            <Frame Padding="0,0,0,0" HeightRequest="50" BackgroundColor="{StaticResource PrimaryColor}">
+                <Grid>
+                    <Label Text="Sitios Guardados" 
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center"
+                           TextColor="White" 
+                           FontSize="20"
+                           FontAttributes="Bold"
+                           />
+
+                    <Button Text="Atras"
+                           BackgroundColor="{StaticResource PrimaryColor}"
+                           TextColor="White"
+                           CornerRadius="25"
+                           HorizontalOptions="Start"
+                           Clicked="Button_Clicked"
+                           />
+                </Grid>
+            </Frame>
+            
+           
+            <Grid Padding="15,0,15,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="100" />
+                </Grid.RowDefinitions>
+
+                <StackLayout Grid.Row="0">
+
+                    <ListView x:Name="listSites" 
+          ItemTapped="listSites_ItemTapped"
+          SeparatorVisibility="None"
+          BackgroundColor="#F7F7F7"
+          HasUnevenRows="True">
+
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <SwipeView>
+                                        <SwipeView.LeftItems>
+                                            <SwipeItems>
+                                                <SwipeItem Text="Editar" Clicked="SwipeItem_Edit" BackgroundColor="#01A3FF" />
+                                            </SwipeItems>
+                                        </SwipeView.LeftItems>
+
+                                        <SwipeView.RightItems>
+                                            <SwipeItems>
+                                                <SwipeItem Text="Eliminar"
+                                       BackgroundColor="#FF4500" Clicked="SwipeItem_Delete"/>
+                                            </SwipeItems>
+                                        </SwipeView.RightItems>
+
+                                        <Grid Padding="10"
+                          Margin="10,5"
+                          BackgroundColor="White">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="50" />
+                                                <ColumnDefinition Width="*" />
+                                            </Grid.ColumnDefinitions>
+
+                                            <Image Source="{Binding Fotografia, Converter={StaticResource ByteToImage}}"
+                               Grid.Column="0"
+                               HeightRequest="40"
+                               WidthRequest="40"
+                               Aspect="AspectFill"
+                               VerticalOptions="Center"
+                               HorizontalOptions="Start" />
+
+                                            <Label Grid.Column="1"
+                               Text="{Binding Descripcion}"
+                               FontSize="16"
+                               TextColor="#333333"
+                               VerticalOptions="Center"
+                               HorizontalOptions="Start" />
+                                        </Grid>
+                                    </SwipeView>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+
+
+                </StackLayout>
+
+                <StackLayout Grid.Row="1">
+                    <Grid>
+                    
+
+                        <Button x:Name="btnViewMapa"
+                                Text="Ver Mapa"
+                                HorizontalOptions="FillAndExpand"
+                                Grid.Column="0"
+                                BackgroundColor="#00CC99"
+                                TextColor="White"
+                                CornerRadius="25"
+                                Grid.Row="1"
+                                HeightRequest="40"
+                                Clicked="btnViewMapa_Clicked" />
+
+                        <Button x:Name="btnViewListen"
+                                Text="Escuchar Audio"
+                                HorizontalOptions="FillAndExpand" 
+                                BackgroundColor="#00CC99"
+                                TextColor="White"
+                                CornerRadius="25"
+                                Grid.Column="1"
+                                Grid.Row="1"
+                                HeightRequest="40"
+                                Clicked="btnViewListen_Clicked" />
+                    </Grid>
+                </StackLayout>
+            </Grid>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
