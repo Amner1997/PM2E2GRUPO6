@@ -116,7 +116,7 @@
                                 Clicked="btnViewMapa_Clicked" />
 
                         <Button x:Name="btnViewListen"
-                                Text="Escuchar Audio"
+                                Text="Play Audio"
                                 HorizontalOptions="FillAndExpand" 
                                 BackgroundColor="#00CC99"
                                 TextColor="White"

@@ -28,11 +28,12 @@ namespace PM2E2GRUPO6
         public MainPage()
         {
             InitializeComponent();
-            
+
         }
 
         private int GenerarSiguienteId()
         {
+            
             int id = sitioIdCounter;
             sitioIdCounter++;
             return id;
@@ -42,6 +43,7 @@ namespace PM2E2GRUPO6
         protected override void OnAppearing()
         {
             base.OnAppearing();
+            GenerarSiguienteId();
             ObtenerLatitud_Longitud();
         }
 

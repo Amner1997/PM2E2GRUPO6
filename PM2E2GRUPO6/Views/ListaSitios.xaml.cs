@@ -6,6 +6,7 @@ using System;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using System.IO;
 
 namespace PM2E2GRUPO6.Views
 {
@@ -38,6 +39,20 @@ namespace PM2E2GRUPO6.Views
             
         }
 
+        private void EscucharAudio(byte[] bytes)
+        {
+            var audioDirectory = Path.Combine(FileSystem.AppDataDirectory, "Audio");
+            var audioFilePath = Path.Combine(audioDirectory, "temp.wav");
+
+            if (!Directory.Exists(audioDirectory))
+                Directory.CreateDirectory(audioDirectory);
+
+            File.WriteAllBytes(audioFilePath, bytes);
+
+            audioPlayer.Play(audioFilePath);
+        }
+
+
         private void listSites_ItemTapped(object sender, ItemTappedEventArgs e)
         {
             Site = (Sitios)e.Item;
@@ -67,13 +82,16 @@ namespace PM2E2GRUPO6.Views
 
         private void btnViewListen_Clicked(object sender, EventArgs e)
         {
-
+            if(Site == null)
+            {
+                DisplayAlert("Aviso", "Seleccione un sitio", "OK");
+                return;
+            }
+            EscucharAudio(Site.AudioFile);
         }
 
         private async void LoadData()
         {
-                
-
                 listSites.ItemsSource = await _connection.GetAllSitios();
 
 
@@ -84,40 +102,7 @@ namespace PM2E2GRUPO6.Views
                     await DisplayAlert("Aviso", "No cuenta con acceso a internet", "OK");
                     return;
                 }
-            
         }
-
-      /*  private async void EliminarSitio(Sitios site)
-        {
-            var Estado = await DisplayAlert("Aviso", $"Quiere eliminar el sitio con descripcion: {site.Descripcion}?", "SI", "NO");
-
-            if (Estado)
-            {
-                var Resultado = await _connection.GetById(Site.Id.ToString());
-
-                if (Resultado != null)
-                {
-                    var deleteResult = await _connection.GetById(Resultado);
-
-                    if (deleteResult)
-                    {
-                        await DisplayAlert("Aviso", "El sitio se eliminó correctamente", "OK");
-                        LoadData();
-                    }
-                    else
-                    {
-                        await DisplayAlert("Aviso", "No se pudo eliminar el sitio", "OK");
-                    }
-                }
-                else
-                {
-                    await DisplayAlert("Aviso", "El sitio no se encontró", "OK");
-                }
-            }
-        }*/
-
-
-
 
         private async void SwipeItem_Edit(object sender, EventArgs e)
         {
