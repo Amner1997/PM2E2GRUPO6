@@ -8,10 +8,127 @@
             <Converter:ByteArrayImage x:Key="ByteToImage"/>
         </ResourceDictionary>
     </ContentPage.Resources>
-    
-    <ContentPage.Content>
+
+    <ScrollView>
         <StackLayout>
-            
+            <Frame Padding="0,0,0,0" HeightRequest="40">
+                <Grid>
+                    <Label Text="ACTUALIZAR SITIO" 
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center"
+                       TextColor="#01A3FF" 
+                       FontSize="20"
+                       FontAttributes="Bold"/>
+
+                    <Button Text="Atras"
+                            BackgroundColor="#2D90F9"
+                            CornerRadius="25"
+                        HorizontalOptions="Start"
+                        Clicked="Button_Clicked" />
+                </Grid>
+            </Frame>
+            <Grid>
+                <Image Source="logo.png"
+               Aspect="AspectFit"
+               WidthRequest="110"
+               Grid.Row="0"
+               Grid.ColumnSpan="2"
+               HorizontalOptions="Center"/>
+            </Grid>
+
+            <StackLayout>
+                
+                <Label Text="CLICK PARA TOMAR CAPTURA"
+                       TextColor="#01A3FF"
+                       HorizontalOptions="Center"
+                   />
+
+                <Image x:Name="imgFoto"
+                       Source="Foto.png"
+                       Aspect="AspectFit"
+                       HorizontalOptions="Center" 
+                       WidthRequest="300"
+                       HeightRequest="220" >
+
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"
+                                              NumberOfTapsRequired="1"/>
+                    </Image.GestureRecognizers>
+
+                </Image>
+            </StackLayout>
+
+            <Label Text="Latitud:" 
+                   TextColor="#01A3FF"
+               Margin="30,10,0,0"
+               HorizontalOptions="StartAndExpand" 
+               FontSize="20"/>
+
+            <Entry x:Name="txtLatitude"
+                   Keyboard="Numeric"
+                   Placeholder=""
+                   HorizontalOptions="FillAndExpand" 
+                   Margin="30,0,30,0"
+                   IsEnabled="False"/>
+
+            <Label Text="Longitud:" 
+                   TextColor="#01A3FF"
+               Margin="30,10,0,0"
+               HorizontalOptions="StartAndExpand" 
+               FontSize="20"/>
+
+            <Entry x:Name="txtLongitude"
+                   Keyboard="Numeric"
+                   Placeholder=""
+                   HorizontalOptions="FillAndExpand" 
+                   Margin="30,0,30,0"
+                   IsEnabled="False"/>
+
+            <Label Text="Descripcion:" 
+                   TextColor="#01A3FF"
+               Margin="30,10,0,0"
+               HorizontalOptions="StartAndExpand" 
+               FontSize="20"/>
+
+            <Editor x:Name="txtDescription"
+                    Keyboard="Text"
+                    AutoSize="TextChanges"
+                    MaxLength="50"
+                    HorizontalOptions="FillAndExpand"
+                    Margin="30,0,30,0"
+                    Placeholder=""/>
+
+            <Label Text="CLICK PARA GRABAR VOZ"
+                x:Name="txtMessage"  
+                   TextColor="#01A3FF"
+               HorizontalOptions="Center" 
+               FontSize="20"/>
+
+            <Button Text="Grabar audio" 
+                    x:Name="btnGrabar" 
+                    Margin="20,0,20,0"
+                    BackgroundColor="#2D90F9"
+                    CornerRadius="25"
+                    Clicked="btnGrabar_Clicked"/>
+
+            <Grid Margin="20,10,20,0">
+                <Button x:Name="btnAdd"
+                            Text="Actualizar"
+                            HorizontalOptions="FillAndExpand"
+                            Grid.Column="0"
+                            BackgroundColor="#2D90F9"
+                            CornerRadius="25"
+                            Clicked="btnAdd_Clicked"/>
+
+                <Button x:Name="btnUpdateLocation"
+                            Text="Nueva Localizacion"
+                            HorizontalOptions="FillAndExpand"
+                            BackgroundColor="#2D90F9"
+                            CornerRadius="25"
+                            FontSize="12"
+                            Grid.Column="1"
+                            Clicked="btnUpdateLocation_Clicked"/>
+            </Grid>
         </StackLayout>
-    </ContentPage.Content>
+    </ScrollView>
 </ContentPage>

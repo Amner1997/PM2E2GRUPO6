@@ -19,7 +19,7 @@ namespace PM2E2GRUPO6
     public partial class MainPage : ContentPage
     {
         private AudioPlayer Audio_Player = new AudioPlayer();
-        private static int sitioIdCounter = 1; // Variable para el contador de ID
+        private int sitioIdCounter = 1; // Variable para el contador de ID
         private AudioRecorderService Audio_RecorderService = new AudioRecorderService();
         MediaFile FotoCap = null;
         private bool Play = false;
@@ -28,8 +28,15 @@ namespace PM2E2GRUPO6
         public MainPage()
         {
             InitializeComponent();
+            
         }
 
+        private int GenerarSiguienteId()
+        {
+            int id = sitioIdCounter;
+            sitioIdCounter++;
+            return id;
+        }
 
 
         protected override void OnAppearing()
@@ -38,7 +45,8 @@ namespace PM2E2GRUPO6
             ObtenerLatitud_Longitud();
         }
 
-      
+        
+
         private async void BtnAdd(object sender, EventArgs e)
         {
             var ActualConex = Connectivity.NetworkAccess;
@@ -80,7 +88,7 @@ namespace PM2E2GRUPO6
 
 
             Sitios sitio = new Sitios();
-            sitio.Id = sitioIdCounter++;
+            sitio.Id = GenerarSiguienteId();
             sitio.Descripcion = txtDescription.Text;
             sitio.Latitud = double.Parse(txtLatitude.Text);
             sitio.Longitud = double.Parse(txtLongitude.Text);

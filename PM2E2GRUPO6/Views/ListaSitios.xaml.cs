@@ -2,13 +2,8 @@
 using PM2E2GRUPO6.Models;
 using PM2E2GRUPO6.Servicios;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Xamarin.Essentials;
 using Xamarin.Forms;
-using Xamarin.Forms.Maps;
 using Xamarin.Forms.Xaml;
 
 namespace PM2E2GRUPO6.Views
@@ -32,9 +27,25 @@ namespace PM2E2GRUPO6.Views
 
         }
 
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            
+                LoadData();
+                editando = false;
+                Site = null;
+            
+        }
+
         private void listSites_ItemTapped(object sender, ItemTappedEventArgs e)
         {
-
+            try
+            {
+                Site = e.Item as Sitios;
+            }catch(Exception ex)
+            {
+                DisplayAlert("Error", ex.Message, "OK");
+            }
         }
 
         private void btnViewMapa_Clicked(object sender, EventArgs e)
@@ -98,8 +109,7 @@ namespace PM2E2GRUPO6.Views
 
         private async void SwipeItem_Edit(object sender, EventArgs e)
         {
-            await DisplayAlert("Aviso", "Editar", "OK");
-            await Navigation.PushModalAsync(new UpdateSitio());
+            await Navigation.PushModalAsync(new UpdateSitio(Site));
         }
 
         private async void SwipeItem_Delete(object sender, EventArgs e)
