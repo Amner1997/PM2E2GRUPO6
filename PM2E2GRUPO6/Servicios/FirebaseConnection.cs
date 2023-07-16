@@ -6,6 +6,9 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 using System.Linq;
+using System.ComponentModel;
+using System.Reactive.Disposables;
+using Firebase.Database.Query;
 
 namespace PM2E2GRUPO6.Servicios
 {
@@ -47,7 +50,12 @@ namespace PM2E2GRUPO6.Servicios
 
         }
 
-
+        // Actualizar Sitios
+        public async Task<bool> UpdateSitios(Sitios sitio)
+        {
+            await conexionFirebase.Child(nameof(Sitios) + "/" + sitio.Id).PutAsync(JsonConvert.SerializeObject(sitio));
+            return true;
+        }
 
 
 

@@ -37,11 +37,6 @@ namespace PM2E2GRUPO6.Views
 
         }
 
-        private void btnDelete_Clicked(object sender, EventArgs e)
-        {
-
-        }
-
         private void btnViewMapa_Clicked(object sender, EventArgs e)
         {
 
@@ -99,9 +94,12 @@ namespace PM2E2GRUPO6.Views
         }*/
 
 
+
+
         private async void SwipeItem_Edit(object sender, EventArgs e)
         {
             await DisplayAlert("Aviso", "Editar", "OK");
+            await Navigation.PushModalAsync(new UpdateSitio());
         }
 
         private async void SwipeItem_Delete(object sender, EventArgs e)
