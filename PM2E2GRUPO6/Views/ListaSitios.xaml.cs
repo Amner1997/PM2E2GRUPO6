@@ -114,6 +114,7 @@ namespace PM2E2GRUPO6.Views
                 if (Id != null) {
                     await _connection.deleteSite(Id);
                     LoadData();
+                    await DisplayAlert("Alerta", "Sitio eliminado correctamente", "Ok");
                     /*bool isDelete = await _connection.DeleteSitios(Id);
                     if (isDelete){
                         await DisplayAlert("Alerta","Sitio eliminado correctamente", "Ok");
