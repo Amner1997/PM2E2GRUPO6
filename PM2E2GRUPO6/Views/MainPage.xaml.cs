@@ -105,21 +105,8 @@ namespace PM2E2GRUPO6
             imgFoto.Source = "Foto.png";
             txtDescription.Text = "";
             Imagen = null;
+
             ObtenerLatitud_Longitud();
-
-            /*  if (await IsSaved)
-              {
-                  await DisplayAlert("Aviso", "Sitio Agregado", "OK");
-                  imgFoto.Source = "Foto.png";
-                  txtDescription.Text = "";
-                  Imagen = null;
-                  ObtenerLatitud_Longitud();
-              }
-              else
-              {
-                  await DisplayAlert("Error", "Sitio Agregado no agregado", "OK");
-              }*/
-
         }
 
         // Codigo para iniciar la grabacion de audio
@@ -139,7 +126,7 @@ namespace PM2E2GRUPO6
                 await Audio_RecorderService.StopRecording();
                 Audio_Player.Play(Audio_RecorderService.GetAudioFilePath());
                 txtMessage.Text = "No esta grabando";
-                txtMessage.TextColor = Color.Green;
+                txtMessage.TextColor = Color.Black;
                 btnGrabar.Text= "Grabar Audio";
                 Play = true;
             }
@@ -147,7 +134,7 @@ namespace PM2E2GRUPO6
             {
                 await Audio_RecorderService.StartRecording();
                 txtMessage.Text = "Esta grabando";
-                txtMessage.TextColor = Color.Green;
+                txtMessage.TextColor = Color.Red;
                 btnGrabar.Text = "Dejar de Grabar";
             }
 

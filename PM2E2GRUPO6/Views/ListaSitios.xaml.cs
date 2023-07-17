@@ -26,7 +26,7 @@ namespace PM2E2GRUPO6.Views
 
         private void Button_Clicked(object sender, EventArgs e)
         {
-
+            OnBackButtonPressed();
         }
 
         protected override void OnAppearing()

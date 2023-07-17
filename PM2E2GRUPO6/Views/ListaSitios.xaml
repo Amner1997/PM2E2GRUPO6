@@ -23,6 +23,7 @@
                    FontAttributes="Bold" />
 
                     <Button Text="Atras"
+                   ImageSource="back.png"
                    BackgroundColor="{StaticResource PrimaryColor}"
                    TextColor="White"
                    CornerRadius="25"
@@ -50,7 +51,7 @@
                                     <SwipeView>
                                         <SwipeView.LeftItems>
                                             <SwipeItems>
-                                                <SwipeItem Text="Editar" Clicked="SwipeItem_Edit" BackgroundColor="#01A3FF" />
+                                                <SwipeItem Text="Editar" Clicked="SwipeItem_Edit" BackgroundColor="#01A3FF" IconImageSource="edit.png"/>
                                             </SwipeItems>
                                         </SwipeView.LeftItems>
 
@@ -59,7 +60,7 @@
                                                 <SwipeItem Text="Eliminar"
                                                    BackgroundColor="#FF4500"
                                                    Clicked="SwipeItem_Delete"
-                                                   CommandParameter="{Binding Id}" />
+                                                   CommandParameter="{Binding Id}" IconImageSource="delete.png"/>
                                             </SwipeItems>
                                         </SwipeView.RightItems>
 

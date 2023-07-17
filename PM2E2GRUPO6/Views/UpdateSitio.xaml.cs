@@ -188,7 +188,7 @@ namespace PM2E2GRUPO6.Views
 
         private void Button_Clicked(object sender, EventArgs e)
         {
-
+            OnBackButtonPressed();
         }
 
         private async void btnGrabar_Clicked(object sender, EventArgs e)
@@ -207,7 +207,7 @@ namespace PM2E2GRUPO6.Views
                 await Audio_RecorderService.StopRecording();
                 Audio_Player.Play(Audio_RecorderService.GetAudioFilePath());
                 txtMessage.Text = "No esta grabando";
-                txtMessage.TextColor = Color.Green;
+                txtMessage.TextColor = Color.Black;
                 btnGrabar.Text = "Grabar Audio";
                 play = true;
             }
@@ -215,7 +215,7 @@ namespace PM2E2GRUPO6.Views
             {
                 await Audio_RecorderService.StartRecording();
                 txtMessage.Text = "Esta grabando";
-                txtMessage.TextColor = Color.Green;
+                txtMessage.TextColor = Color.Red;
                 btnGrabar.Text = "Dejar de Grabar";
             }
         }
@@ -277,23 +277,6 @@ namespace PM2E2GRUPO6.Views
             imgFoto.Source = "Foto.png";
             txtDescription.Text = "";
             Image = null;
-           
-            
-            //ObtenerLatitud_Longitud();
-
-            /*   if (await IsSaved)
-               {
-                   await DisplayAlert("Aviso", "Sitio Actualizado", "OK");
-                   imgFoto.Source = "Foto.png";
-                   txtDescription.Text = "";
-                   Image = null;
-                   //ObtenerLatitud_Longitud();
-               }
-               else
-               {
-                   await DisplayAlert("Error", "Sitio no actulizado", "OK");
-               }*/
-
         }
 
         private void btnUpdateLocation_Clicked(object sender, EventArgs e)

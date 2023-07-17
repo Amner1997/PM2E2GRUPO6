@@ -7,15 +7,11 @@
         <StackLayout>
 
             <StackLayout>
-                <Label  Text="IMAGEN DEL SITIO"
-                        HorizontalOptions="Center"
-                        TextColor="#2D90F9" 
-                        FontSize="20"
-                   />
-
-                <Label Text="TOQUE LA IMAGEN PARA TOMAR FOTO"
-                       TextColor="#2D90F9"
+                <Label Text="Toque la imagen para tomar una foto"
+                       TextColor="Black"
                        HorizontalOptions="Center"
+                       FontSize="22"
+                       FontAttributes="Bold"
                    />
 
                 <Image x:Name="imgFoto"
@@ -37,7 +33,7 @@
                Margin="30,10,0,0"
                HorizontalOptions="StartAndExpand" 
                FontSize="20"
-               TextColor="#2D90F9"/>
+               TextColor="Black"/>
 
             <Entry x:Name="txtLatitude"
                    Keyboard="Numeric"
@@ -50,7 +46,7 @@
             <Label Text="Longitud:" 
                Margin="30,10,0,0"
                HorizontalOptions="StartAndExpand" 
-               TextColor="#2D90F9"
+               TextColor="Black"
                FontSize="20"/>
 
             <Entry x:Name="txtLongitude"
@@ -63,7 +59,7 @@
 
             <Label Text="Descripcion:" 
                Margin="30,10,0,0"
-               TextColor="#2D90F9"
+               TextColor="Black"
                HorizontalOptions="StartAndExpand" 
                FontSize="20"/>
 
@@ -76,8 +72,8 @@
                     Placeholder=""
                     />
 
-            <Label Text="CLICK EN GRABAR VOZ"
-                   TextColor="#2D90F9"
+            <Label Text="CLICK EN GRABAR AUDIO"
+                   TextColor="Black"
                    HorizontalOptions="Center"
                    x:Name="txtMessage"   
                    FontSize="20"/>

@@ -16,12 +16,13 @@
                     <Label Text="ACTUALIZAR SITIO" 
                        HorizontalOptions="Center"
                        VerticalOptions="Center"
-                       TextColor="#01A3FF" 
+                       TextColor="Black" 
                        FontSize="20"
                        FontAttributes="Bold"/>
 
                     <Button Text="Atras"
-                            BackgroundColor="#2D90F9"
+                            ImageSource="back.png"
+                            BackgroundColor="#00CC99"
                             CornerRadius="25"
                         HorizontalOptions="Start"
                         Clicked="Button_Clicked" />
@@ -38,8 +39,8 @@
 
             <StackLayout>
                 
-                <Label Text="CLICK PARA TOMAR CAPTURA"
-                       TextColor="#01A3FF"
+                <Label Text="Toque para una tomar foto"
+                       TextColor="#00CC99"
                        HorizontalOptions="Center"
                    />
 
@@ -59,7 +60,7 @@
             </StackLayout>
 
             <Label Text="Latitud:" 
-                   TextColor="#01A3FF"
+                   TextColor="Black"
                Margin="30,10,0,0"
                HorizontalOptions="StartAndExpand" 
                FontSize="20"/>
@@ -72,7 +73,7 @@
                    IsEnabled="False"/>
 
             <Label Text="Longitud:" 
-                   TextColor="#01A3FF"
+                   TextColor="Black"
                Margin="30,10,0,0"
                HorizontalOptions="StartAndExpand" 
                FontSize="20"/>
@@ -85,7 +86,7 @@
                    IsEnabled="False"/>
 
             <Label Text="Descripcion:" 
-                   TextColor="#01A3FF"
+                   TextColor="Black"
                Margin="30,10,0,0"
                HorizontalOptions="StartAndExpand" 
                FontSize="20"/>
@@ -98,16 +99,16 @@
                     Margin="30,0,30,0"
                     Placeholder=""/>
 
-            <Label Text="CLICK PARA GRABAR VOZ"
+            <Label Text="TOQUE PARA GRABAR VOZ"
                 x:Name="txtMessage"  
-                   TextColor="#01A3FF"
+                   TextColor="Black"
                HorizontalOptions="Center" 
                FontSize="20"/>
 
             <Button Text="Grabar audio" 
                     x:Name="btnGrabar" 
                     Margin="20,0,20,0"
-                    BackgroundColor="#2D90F9"
+                    BackgroundColor="#00CC99"
                     CornerRadius="25"
                     Clicked="btnGrabar_Clicked"/>
 
@@ -116,14 +117,14 @@
                             Text="Actualizar"
                             HorizontalOptions="FillAndExpand"
                             Grid.Column="0"
-                            BackgroundColor="#2D90F9"
+                            BackgroundColor="#00CC99"
                             CornerRadius="25"
                             Clicked="btnAdd_Clicked"/>
 
                 <Button x:Name="btnUpdateLocation"
                             Text="Nueva Localizacion"
                             HorizontalOptions="FillAndExpand"
-                            BackgroundColor="#2D90F9"
+                            BackgroundColor="#00CC99"
                             CornerRadius="25"
                             FontSize="12"
                             Grid.Column="1"
