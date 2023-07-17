@@ -18,6 +18,7 @@ namespace PM2E2GRUPO6
 {
     public partial class MainPage : ContentPage
     {
+        //Integrantes
         private AudioPlayer Audio_Player = new AudioPlayer();
         private int sitioIdCounter = 1; // Variable para el contador de ID
         private AudioRecorderService Audio_RecorderService = new AudioRecorderService();
