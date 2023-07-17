@@ -114,10 +114,16 @@ namespace PM2E2GRUPO6.Views
             var resp = await DisplayAlert("Aviso", "Desea eliminar el campo?", "Si", "No");
             if (resp){
                 SwipeItem item = sender as SwipeItem;
-                var id = item.CommandParameter.ToString();
-                //var id = ((SwipedEventArgs)e).Parameter as string;
-                if (id != null) await DisplayAlert("Great", "valor " + id, "Ok");
-                else await DisplayAlert("Error","error","ok");
+                var Id = item.CommandParameter.ToString();
+                if (Id != null) {
+                    await _connection.deleteSite(Id);
+                    /*bool isDelete = await _connection.DeleteSitios(Id);
+                    if (isDelete){
+                        await DisplayAlert("Alerta","Sitio eliminado correctamente", "Ok");
+                    }else{
+                        await DisplayAlert("Alerta","Ha ocurrido un error","Ok");
+                    }*/
+                } else await DisplayAlert("Error","error","ok");
             }
             else
             {

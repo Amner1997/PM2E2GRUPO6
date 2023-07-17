@@ -98,9 +98,18 @@ namespace PM2E2GRUPO6.Servicios
 
 
         //Eliminar sitio
-        public async Task<bool> DeleteSitios(string id){
-            await conexionFirebase.Child(nameof(Sitios) + "/" + id).DeleteAsync();
+        public async Task<bool> DeleteSitios(string Id)
+        {
+            //await conexionFirebase.Child(nameof(Sitios) + "/" + Id).DeleteAsync();
+            await conexionFirebase.Child("Sitios").Child(Id).DeleteAsync();
             return true;
+        }
+
+        public async Task deleteSite(string Id){
+            int id = Convert.ToInt32(Id);
+            var toDelete = (await conexionFirebase.Child("Sitios").OnceAsync<Sitios>()).FirstOrDefault
+                (a => a.Object.Id == id);
+            await conexionFirebase.Child("Sitios").Child(toDelete.Key).DeleteAsync();
         }
 
     }
