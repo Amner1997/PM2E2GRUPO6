@@ -62,5 +62,10 @@ namespace PM2E2GRUPO6.Views
                 await Xamarin.Essentials.Map.OpenAsync(location, options);
            
         }
+
+        private void Button_Clicked(object sender, EventArgs e)
+        {
+            OnBackButtonPressed();
+        }
     }
 }

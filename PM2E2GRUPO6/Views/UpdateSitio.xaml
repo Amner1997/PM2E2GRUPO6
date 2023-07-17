@@ -9,7 +9,7 @@
         </ResourceDictionary>
     </ContentPage.Resources>
 
-    <ScrollView>
+    <ContentPage.Content>
         <StackLayout>
             <Frame Padding="0,0,0,0" HeightRequest="40">
                 <Grid>
@@ -42,6 +42,7 @@
                 <Label Text="Toque para una tomar foto"
                        TextColor="#00CC99"
                        HorizontalOptions="Center"
+                       FontSize="20"
                    />
 
                 <Image x:Name="imgFoto"
@@ -100,12 +101,13 @@
                     Placeholder=""/>
 
             <Label Text="TOQUE PARA GRABAR VOZ"
-                x:Name="txtMessage"  
+                x:Name="txtMensaje"  
                    TextColor="Black"
                HorizontalOptions="Center" 
                FontSize="20"/>
 
             <Button Text="Grabar audio" 
+                    ImageSource="record.png"
                     x:Name="btnGrabar" 
                     Margin="20,0,20,0"
                     BackgroundColor="#00CC99"
@@ -115,6 +117,7 @@
             <Grid Margin="20,10,20,0">
                 <Button x:Name="btnAdd"
                             Text="Actualizar"
+                            ImageSource="refresh.png"
                             HorizontalOptions="FillAndExpand"
                             Grid.Column="0"
                             BackgroundColor="#00CC99"
@@ -124,6 +127,7 @@
                 <Button x:Name="btnUpdateLocation"
                             Text="Nueva Localizacion"
                             HorizontalOptions="FillAndExpand"
+                            ImageSource="localizacion.png"
                             BackgroundColor="#00CC99"
                             CornerRadius="25"
                             FontSize="12"
@@ -131,5 +135,5 @@
                             Clicked="btnUpdateLocation_Clicked"/>
             </Grid>
         </StackLayout>
-    </ScrollView>
+    </ContentPage.Content>
 </ContentPage>

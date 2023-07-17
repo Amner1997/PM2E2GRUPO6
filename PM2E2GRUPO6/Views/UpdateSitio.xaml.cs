@@ -88,37 +88,6 @@ namespace PM2E2GRUPO6.Views
             }
         }
 
-        private async void BtnGrabar(object sender, EventArgs e)
-        {
-            var Estado = await Permissions.RequestAsync<Permissions.Microphone>();
-            var Estado2 = await Permissions.RequestAsync<Permissions.StorageRead>();
-            var Estado3 = await Permissions.RequestAsync<Permissions.StorageWrite>();
-
-            if (Estado != PermissionStatus.Granted & Estado2 != PermissionStatus.Granted & Estado3 != PermissionStatus.Granted)
-            {
-                return;
-            }
-
-            if (Audio_RecorderService.IsRecording)
-            {
-                await Audio_RecorderService.StopRecording();
-                Audio_Player.Play(Audio_RecorderService.GetAudioFilePath());
-                txtMessage.Text = "No esta grabando";
-                txtMessage.TextColor = Color.Green;
-                btnGrabar.Text = "Grabar Audio";
-                play = true;
-            }
-            else
-            {
-                await Audio_RecorderService.StartRecording();
-                txtMessage.Text = "Esta grabando";
-                txtMessage.TextColor = Color.Green;
-                btnGrabar.Text = "Dejar de Grabar";
-            }
-
-
-        }
-
         private async void ObtenerLatitud_Longitud()
         {
             try
@@ -206,16 +175,18 @@ namespace PM2E2GRUPO6.Views
             {
                 await Audio_RecorderService.StopRecording();
                 Audio_Player.Play(Audio_RecorderService.GetAudioFilePath());
-                txtMessage.Text = "No esta grabando";
-                txtMessage.TextColor = Color.Black;
+                txtMensaje.Text = "No esta grabando";
+                btnGrabar.ImageSource = "record.png";
+                txtMensaje.TextColor = Color.Black;
                 btnGrabar.Text = "Grabar Audio";
                 play = true;
             }
             else
             {
                 await Audio_RecorderService.StartRecording();
-                txtMessage.Text = "Esta grabando";
-                txtMessage.TextColor = Color.Red;
+                txtMensaje.Text = "Esta grabando";
+                btnGrabar.ImageSource = "record2.png";
+                txtMensaje.TextColor = Color.Red;
                 btnGrabar.Text = "Dejar de Grabar";
             }
         }
@@ -229,11 +200,34 @@ namespace PM2E2GRUPO6.Views
             if (ActualConex != NetworkAccess.Internet)
             {
                 await DisplayAlert("Aviso", "No hay conexion a internet", "OK");
+                return;
             }
+
+ 
+            if (Image == null)
+            {
+                await DisplayAlert("Error", "Tavia no ha tomado foto", "OK");
+                return;
+            }
+
+            if (string.IsNullOrEmpty(txtLatitude.Text) || string.IsNullOrEmpty(txtLongitude.Text))
+            {
+                await DisplayAlert("Error", "Aun no se ha obtenido la ubicacion", "OK");
+                ObtenerLatitud_Longitud();
+                return;
+            }
+
+            if (string.IsNullOrEmpty(txtDescription.Text))
+            {
+                await DisplayAlert("Error", "Debel escribir una descripcion del Sitio", "OK");
+                return;
+            }
+
 
             if (!play)
             {
                 await DisplayAlert("Error", "Aun no ha grabado audio", "OK");
+                return;
             }
 
             var Length = ConvertirAudioAByteArray().Length;
@@ -244,23 +238,6 @@ namespace PM2E2GRUPO6.Views
             }
 
             audio = ConvertirAudioAByteArray();
-
-            if (Image == null)
-            {
-                await DisplayAlert("Error", "Tavia no ha tomado foto", "OK");
-            }
-
-            if (string.IsNullOrEmpty(txtDescription.Text))
-            {
-                await DisplayAlert("Error", "Debel escribir una descripcion del Sitio", "OK");
-            }
-
-            if (string.IsNullOrEmpty(txtLatitude.Text) || string.IsNullOrEmpty(txtLongitude.Text))
-            {
-                await DisplayAlert("Error", "Aun no se ha obtenido la ubicacion", "OK");
-                ObtenerLatitud_Longitud();
-                return;
-            }
 
             Sitios sitio = new Sitios();
             sitio.Id = this.sitio.Id;

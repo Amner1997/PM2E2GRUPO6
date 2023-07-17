@@ -38,7 +38,7 @@
                     <RowDefinition Height="100" />
                 </Grid.RowDefinitions>
 
-                <StackLayout Grid.Row="0">
+                <StackLayout Grid.Row="0" >
                     <ListView x:Name="listSites" 
                       ItemTapped="listSites_ItemTapped"
                       SeparatorVisibility="None"
@@ -48,6 +48,7 @@
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <ViewCell>
+                                    
                                     <SwipeView>
                                         <SwipeView.LeftItems>
                                             <SwipeItems>
@@ -88,6 +89,7 @@
                                            HorizontalOptions="Start" />
                                         </Grid>
                                     </SwipeView>
+                                   
                                 </ViewCell>
                             </DataTemplate>
                         </ListView.ItemTemplate>
@@ -97,8 +99,9 @@
                 <StackLayout Grid.Row="1">
                     <Grid>
                         <Button x:Name="btnViewMapa"
-                        Text="Ver Mapa"
+                        Text="Ver"
                         HorizontalOptions="FillAndExpand"
+                        ImageSource="map.png"
                         Grid.Column="0"
                         BackgroundColor="#00CC99"
                         TextColor="White"
@@ -107,7 +110,8 @@
                         Clicked="btnViewMapa_Clicked" />
 
                         <Button x:Name="btnViewListen"
-                        Text="Play Audio"
+                        Text="Play"
+                        ImageSource="play.png"
                         HorizontalOptions="FillAndExpand" 
                         BackgroundColor="#00CC99"
                         TextColor="White"

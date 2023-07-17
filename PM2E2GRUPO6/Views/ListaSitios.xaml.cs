@@ -7,6 +7,7 @@ using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using System.IO;
+using System.Globalization;
 
 namespace PM2E2GRUPO6.Views
 {
@@ -112,6 +113,7 @@ namespace PM2E2GRUPO6.Views
                 var Id = item.CommandParameter.ToString();
                 if (Id != null) {
                     await _connection.deleteSite(Id);
+                    LoadData();
                     /*bool isDelete = await _connection.DeleteSitios(Id);
                     if (isDelete){
                         await DisplayAlert("Alerta","Sitio eliminado correctamente", "Ok");

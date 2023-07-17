@@ -10,7 +10,7 @@
                 <Label Text="Toque la imagen para tomar una foto"
                        TextColor="Black"
                        HorizontalOptions="Center"
-                       FontSize="22"
+                       FontSize="20"
                        FontAttributes="Bold"
                    />
 
@@ -72,13 +72,14 @@
                     Placeholder=""
                     />
 
-            <Label Text="CLICK EN GRABAR AUDIO"
+            <Label Text="TOQUE EN GRABAR AUDIO"
                    TextColor="Black"
                    HorizontalOptions="Center"
                    x:Name="txtMessage"   
                    FontSize="20"/>
 
             <Button Text="Grabar audio" 
+                    ImageSource="record.png"
                     x:Name="btnGrabar" 
                     Margin="20,0,20,0"
                     BackgroundColor="#00CC99"
@@ -90,6 +91,7 @@
             <Grid Margin="20,10,20,0">
                 <Button x:Name="btnAdd"
                             Text="Agregar"
+                            ImageSource="add.png"
                             HorizontalOptions="FillAndExpand"
                             Grid.Column="0"
                             BackgroundColor="#00CC99"
@@ -98,6 +100,7 @@
 
                 <Button x:Name="btnList"
                             Text="Lista Sitios"
+                            ImageSource="list.png"
                             HorizontalOptions="FillAndExpand"
                             Grid.Column="1"
                             BackgroundColor="#00CC99"

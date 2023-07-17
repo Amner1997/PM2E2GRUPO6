@@ -22,7 +22,7 @@ namespace PM2E2GRUPO6
         private int sitioIdCounter = 1; // Variable para el contador de ID
         private AudioRecorderService Audio_RecorderService = new AudioRecorderService();
         MediaFile FotoCap = null;
-        private bool Play = false;
+        private bool play = false;
         byte[] Imagen;
 
         public MainPage()
@@ -39,15 +39,12 @@ namespace PM2E2GRUPO6
             return id;
         }
 
-
         protected override void OnAppearing()
         {
             base.OnAppearing();
             GenerarSiguienteId();
             ObtenerLatitud_Longitud();
         }
-
-        
 
         private async void BtnAdd(object sender, EventArgs e)
         {
@@ -56,38 +53,42 @@ namespace PM2E2GRUPO6
             if(ActualConex != NetworkAccess.Internet)
             {
                 await DisplayAlert("Aviso", "No hay conexion a internet", "OK");
+                return;
             }
 
-            if (!Play)
+
+            if (Imagen == null)
             {
-                await DisplayAlert("Error", "Aun no ha grabado audio", "OK");
+                await DisplayAlert("Error", "Todavia no ha tomado foto", "OK");
+                return;
             }
 
-            var Length = ConvertirAudioAByteArray().Length;
-
-            if(Length > 1500000)
-            {
-                await DisplayAlert("Error", "El audio deber ser mas corto", "OK");
-            }
-
-            if(Imagen == null)
-            {
-                await DisplayAlert("Error", "Tavia no ha tomado foto", "OK");
-            }
-
-            if (string.IsNullOrEmpty(txtDescription.Text))
-            {
-                await DisplayAlert("Error", "Debel escribir una descripcion del Sitio", "OK");
-            }
-
-            if(string.IsNullOrEmpty(txtLatitude.Text) || string.IsNullOrEmpty(txtLongitude.Text))
+            if (string.IsNullOrEmpty(txtLatitude.Text) || string.IsNullOrEmpty(txtLongitude.Text))
             {
                 await DisplayAlert("Error", "Aun no se ha obtenido la ubicacion", "OK");
                 ObtenerLatitud_Longitud();
                 return;
             }
 
+            if (string.IsNullOrEmpty(txtDescription.Text))
+            {
+                await DisplayAlert("Error", "Debe escribir una descripcion del Sitio", "OK");
+                return;
+            }
 
+            if (!play)
+            {
+                await DisplayAlert("Error", "Aun no ha grabado audio", "OK");
+                return;
+            }
+
+            var Length = ConvertirAudioAByteArray().Length;
+
+            if (Length > 1500000)
+            {
+                await DisplayAlert("Error", "El audio deber ser mas corto", "OK");
+                return;
+            }
 
             Sitios sitio = new Sitios();
             sitio.Id = GenerarSiguienteId();
@@ -126,14 +127,16 @@ namespace PM2E2GRUPO6
                 await Audio_RecorderService.StopRecording();
                 Audio_Player.Play(Audio_RecorderService.GetAudioFilePath());
                 txtMessage.Text = "No esta grabando";
+                btnGrabar.ImageSource = "record.png";
                 txtMessage.TextColor = Color.Black;
                 btnGrabar.Text= "Grabar Audio";
-                Play = true;
+                play = true;
             }
             else
             {
                 await Audio_RecorderService.StartRecording();
                 txtMessage.Text = "Esta grabando";
+                btnGrabar.ImageSource = "record2.png";
                 txtMessage.TextColor = Color.Red;
                 btnGrabar.Text = "Dejar de Grabar";
             }
