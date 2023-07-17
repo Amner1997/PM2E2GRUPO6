@@ -58,17 +58,12 @@ namespace PM2E2GRUPO6.Views
             Site = (Sitios)e.Item;
         }
 
-        private void btnDelete_Clicked(object sender, EventArgs e)
-        {
-
-        }
-
         private async void btnViewMapa_Clicked(object sender, EventArgs e)
         {
 
             try
             {
-                await Navigation.PushModalAsync(new VerMapa(Site.Latitud,Site.Longitud,Site.Descripcion));
+                await Navigation.PushModalAsync(new VerMapa(Site.Latitud,Site.Longitud,Site.Descripcion, Site));
              
             }
             catch(Exception M)

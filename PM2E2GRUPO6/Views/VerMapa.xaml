@@ -12,6 +12,7 @@
         <StackLayout Background="#f2f2f2">
             <maps:Map HorizontalOptions="FillAndExpand"
                       VerticalOptions="FillAndExpand" x:Name="mapa" IsShowingUser="True"/>
+            <Button Text="GPS" x:Name="btnNavegar" Clicked="btnNavegar_Clicked"   Grid.Column="0" TextColor="Black" Background="Green"/>
             <Button Text="Compartir" x:Name="btnCompartir"   Grid.Column="0" TextColor="Black" Background="#FF0033"/>
         </StackLayout>
         
