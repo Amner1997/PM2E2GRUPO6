@@ -9,14 +9,17 @@ using Xamarin.Forms.Maps;
 using Xamarin.Essentials;
 using Plugin.Media;
 using Plugin.Geolocator;
+using PM2E2GRUPO6.Models;
 
 namespace PM2E2GRUPO6.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class VerMapa : ContentPage
     {
-        public VerMapa(double latitud, double longitud, string descripcion)
+        Sitios Site = null;
+        public VerMapa(double latitud, double longitud, string descripcion, Sitios site)
         {
+            Site = site;
             InitializeComponent();
 
             var locator = CrossGeolocator.Current;
@@ -24,16 +27,16 @@ namespace PM2E2GRUPO6.Views
 
             if (isGpsEnabled)
             {
-                // El GPS está activo
                 var pin = new Pin
                 {
                     Position = new Position(latitud, longitud),
-                    Label = "Pin: " + descripcion                   
+                    Label = "Pin: " + descripcion
                 };
 
-           
-                NavigateToBuilding(latitud, longitud);
-                //mapa.Pins.Add(pin);
+                mapa.Pins.Add(pin);
+                //lugares 100 metros
+                mapa.MoveToRegion(MapSpan.FromCenterAndRadius(pin.Position, Distance.FromMeters(100)));
+
 
             }
             else
@@ -43,12 +46,21 @@ namespace PM2E2GRUPO6.Views
             }
 
         }
+
         public async Task NavigateToBuilding(double latitud, double longitud)
         {
             var location = new Location(latitud, longitud);
             var options = new MapLaunchOptions { NavigationMode = NavigationMode.Driving };
          
             await Xamarin.Essentials.Map.OpenAsync(location, options);
+        }
+
+        private async void btnNavegar_Clicked(object sender, EventArgs e)
+        {
+                var location = new Location(Site.Latitud, Site.Longitud);
+                var options = new MapLaunchOptions { NavigationMode = NavigationMode.Driving };
+                await Xamarin.Essentials.Map.OpenAsync(location, options);
+           
         }
     }
 }

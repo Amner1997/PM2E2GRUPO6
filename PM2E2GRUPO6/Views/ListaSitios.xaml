@@ -102,7 +102,7 @@
                         Grid.Column="0"
                         BackgroundColor="#00CC99"
                         TextColor="White"
-                        CornerRadius="25"
+                        CornerRadius="20"
                         HeightRequest="40"
                         Clicked="btnViewMapa_Clicked" />
 
@@ -111,7 +111,7 @@
                         HorizontalOptions="FillAndExpand" 
                         BackgroundColor="#00CC99"
                         TextColor="White"
-                        CornerRadius="25"
+                        CornerRadius="20"
                         Grid.Column="1"
                         HeightRequest="40"
                         Clicked="btnViewListen_Clicked" />
@@ -122,7 +122,7 @@
                         HorizontalOptions="FillAndExpand" 
                         BackgroundColor="#00CC99"
                         TextColor="White"
-                        CornerRadius="25"
+                        CornerRadius="20"
                         Grid.Column="2"
                         HeightRequest="40"
                         Clicked="btnRefresh_Clicked" />
